@@ -244,6 +244,7 @@ def analyze_dtrajs(filename,
    n_metastable_states = estimate_n_macrostates(M,metastability_threshold)
    report.write('# metastable states at metastability threshold {0} kT : {1}\n'.format(
                 metastability_threshold,n_metastable_states))
+   plot_microstate_free_energies(M,model_name)
 
    ### 3. FIND AND SAVE EXEMPLAR STRUCTURES
    exemplars_per_cluster=30
