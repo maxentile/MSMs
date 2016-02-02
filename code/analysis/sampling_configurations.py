@@ -72,7 +72,9 @@ traj_files_abl = glob('../abl_snapshot/*.h5')
 traj_files_src = glob('../src_snapshot/*.h5')
 from msmbuilder.utils import map_drawn_samples
 frames_abl = map_drawn_samples(abl_samples,traj_files_abl)
-frames_src = map_drawn_samples(abl_samples,traj_files_abl)
+frames_src = map_drawn_samples(src_samples,traj_files_src)
+
+# to do : wrap in a function
 
 for i in range(len(frames_abl)):
     msm_weight = msm_abl.populations_[i]
@@ -80,4 +82,4 @@ for i in range(len(frames_abl)):
 
 for i in range(len(frames_src)):
     msm_weight = msm_src.populations_[i]
-    frames_abl[i].save_pdb('src_cluster_{0}_msm_weight_{1:.3f}.pdb'.format(i,msm_weight))
+    frames_src[i].save_pdb('src_cluster_{0}_msm_weight_{1:.3f}.pdb'.format(i,msm_weight))
