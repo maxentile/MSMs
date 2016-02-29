@@ -1,6 +1,6 @@
-There are a lot of random scripts here, corresponding to stages of MSM building I ran separately and inspected before proceeding.
+There are a lot of scripts here, corresponding to stages of MSM building I ran individually and manually inspected before proceeding.
 
-The shell scripts are all just one-liners*, calling a single python script with a set of arguments, plus requesting the appropriate cluster resources.
+The shell scripts are all functionally just one-liners, calling a single python script with a set of arguments, plus requesting the appropriate cluster resources.
 
 The python scripts include several attempts at discretization, and some assorted analysis stuff.
 - featurize.py -- Converted each frame into a feature vector of inter-residue distances (only looking at the subset of these distances that crossed some threshold over the course of the simulation), then projected onto the leading tICs
