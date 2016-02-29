@@ -13,7 +13,7 @@ def discretize(path,name,n_clusters=500,downsampling_ratio=5):
    # load heavy-atom coordinates from all trajectories
    y = md.load_frame(filenames[0],index=0)
    top = y.topology
-   heavy_atoms = top.select('mass>12')
+   heavy_atoms = top.select('mass>=12')
 #   Y = [y.atom_slice(heavy_atoms) for y in md.load(filenames,stride=downsampling_ratio)]
    from msmbuilder import dataset
    Y = dataset.MDTrajDataset(path=path,stride=downsampling_ratio,atom_indices=heavy_atoms)
@@ -22,7 +22,7 @@ def discretize(path,name,n_clusters=500,downsampling_ratio=5):
    print(time() - t)
 
    # run kmedoids clustering on downsampled data
-   kmeds = cluster.MiniBatchKMedoids(n_clusters=n_clusters,batch_size=n_clusters,metric='rmsd')
+   kmeds = cluster.MiniBatchKMedoids(n_clusters=n_clusters,max_iter=1000,batch_size=n_clusters,metric='rmsd')
    dtrajs = kmeds.fit_transform(Y)
    print('Finished mini-batch k-medoids!')
    print(time() - t)
